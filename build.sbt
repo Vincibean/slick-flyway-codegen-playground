@@ -1,5 +1,36 @@
-name := "slick-view-code-generation"
+lazy val databaseUrl = "jdbc:h2:file:./target/DB"
+lazy val databaseUser = "SA"
+lazy val databasePassword = ""
 
-version := "0.1"
+lazy val flyway = (project in file("flyway"))
+  .enablePlugins(FlywayPlugin)
+  .settings(
+    scalaVersion := "2.12.8",
+    flywayUrl := databaseUrl,
+    flywayUser := databaseUser,
+    flywayPassword := databasePassword,
+    flywayLocations += "db/migration"
+  )
 
-scalaVersion := "2.12.8"
+lazy val root = (project in file("."))
+  .enablePlugins(CodegenPlugin)
+  .settings(
+    scalaVersion := "2.12.8",
+    name := "slick-view-code-generation",
+    version := "0.1",
+    libraryDependencies ++= Seq(
+      "com.typesafe.slick" %% "slick" % "3.2.3",
+      "com.h2database" % "h2" % "1.4.186"
+    ),
+    slickCodegenDatabaseUrl := databaseUrl,
+    slickCodegenDatabaseUser := databaseUser,
+    slickCodegenDatabasePassword := databasePassword,
+    slickCodegenDriver := slick.jdbc.H2Profile,
+    slickCodegenJdbcDriver := "org.h2.Driver",
+    slickCodegenOutputPackage := "models",
+    slickCodegenExcludedTables := Seq("schema_version"),
+    sourceGenerators in Compile += (slickCodegen in Compile).taskValue,
+    slickCodegenOutputDir := (sourceManaged in Compile).value / "a"
+  )
+  .dependsOn(flyway)
+  .aggregate(flyway)
