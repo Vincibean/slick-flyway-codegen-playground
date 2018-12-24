@@ -20,7 +20,8 @@ lazy val root = (project in file("."))
     version := "0.1",
     libraryDependencies ++= Seq(
       "com.typesafe.slick" %% "slick" % "3.2.3",
-      "com.h2database" % "h2" % "1.4.186"
+      "com.h2database" % "h2" % "1.4.186",
+      "org.specs2" %% "specs2-core" % "4.3.6" % Test
     ),
     slickCodegenDatabaseUrl := databaseUrl,
     slickCodegenDatabaseUser := databaseUser,
@@ -30,8 +31,7 @@ lazy val root = (project in file("."))
     slickCodegenOutputPackage := "models",
     slickCodegenExcludedTables := Seq("schema_version"),
     sourceGenerators in Compile += (slickCodegen in Compile).taskValue,
-    slickCodegenOutputDir := (sourceManaged in Compile).value / "a",
-    libraryDependencies += "org.specs2" %% "specs2-core" % "4.3.6" % Test
+    slickCodegenOutputDir := (sourceManaged in Compile).value / "a"
   )
   .dependsOn(flyway)
   .aggregate(flyway)
