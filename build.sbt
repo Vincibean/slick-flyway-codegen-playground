@@ -16,7 +16,7 @@ lazy val root = (project in file("."))
   .enablePlugins(CodegenPlugin)
   .settings(
     scalaVersion := "2.12.8",
-    name := "slick-code-generation-playground",
+    name := "slick-flyway-codegen-playground",
     version := "0.1",
     libraryDependencies ++= Seq(
       "com.typesafe.slick" %% "slick" % "3.2.3",

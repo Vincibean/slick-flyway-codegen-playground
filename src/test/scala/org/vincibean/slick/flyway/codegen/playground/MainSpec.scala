@@ -1,4 +1,4 @@
-package org.vincibean.slick.code.generation.playground
+package org.vincibean.slick.flyway.codegen.playground
 
 import models.Tables
 import org.specs2.Specification
