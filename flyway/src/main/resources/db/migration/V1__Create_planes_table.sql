@@ -1,11 +1,11 @@
-create table PLANES (
-    tailNum varchar(7) not null,
-    type varchar(20),
-    manufacturer varchar(30),
-    issueDate varchar(10),
-    model varchar(20),
-    status varchar(20),
-    aircraftType varchar(30),
-    engineType varchar(15),
-    constructionYear varchar(4)
+CREATE TABLE PLANES (
+    tailNum VARCHAR(7) NOT NULL,
+    type VARCHAR(20),
+    manufacturer VARCHAR(30),
+    issueDate VARCHAR(10),
+    model VARCHAR(20),
+    status VARCHAR(20),
+    aircraftType VARCHAR(30),
+    engineType VARCHAR(15),
+    constructionYear VARCHAR(4)
 );
