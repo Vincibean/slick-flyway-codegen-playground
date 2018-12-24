@@ -16,7 +16,7 @@ lazy val root = (project in file("."))
   .enablePlugins(CodegenPlugin)
   .settings(
     scalaVersion := "2.12.8",
-    name := "slick-view-code-generation",
+    name := "slick-code-generation-playground",
     version := "0.1",
     libraryDependencies ++= Seq(
       "com.typesafe.slick" %% "slick" % "3.2.3",
@@ -30,7 +30,8 @@ lazy val root = (project in file("."))
     slickCodegenOutputPackage := "models",
     slickCodegenExcludedTables := Seq("schema_version"),
     sourceGenerators in Compile += (slickCodegen in Compile).taskValue,
-    slickCodegenOutputDir := (sourceManaged in Compile).value / "a"
+    slickCodegenOutputDir := (sourceManaged in Compile).value / "a",
+    libraryDependencies += "org.specs2" %% "specs2-core" % "4.3.6" % Test
   )
   .dependsOn(flyway)
   .aggregate(flyway)
