@@ -10,4 +10,4 @@ resolvers += "Flyway" at "https://flywaydb.org/repo"
 
 addSbtPlugin("io.github.davidmweber" % "flyway-sbt" % "5.2.0")
 
-libraryDependencies += "com.h2database" % "h2" % "1.4.186"
+libraryDependencies += "com.h2database" % "h2" % "1.4.197"
