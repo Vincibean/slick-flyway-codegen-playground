@@ -19,14 +19,19 @@ class MainSpec(implicit ee: ExecutionEnv) extends Specification {
         Flyway must
           provide the right number of flights $s1
           provide the right number of planes $s2
+          provide the right number of rows in the view $s3
       """
 
   private def s1 = {
-    db.run(Tables.Flights.result).map(_.length) must beEqualTo(151102).await(3, 5.seconds)
+    db.run(Tables.Flights.result).map(_.length) must beEqualTo(151102).await(5, 5.seconds)
   }
 
   private def s2 = {
-    db.run(Tables.Planes.result).map(_.length) must beEqualTo(5029).await(3, 5.seconds)
+    db.run(Tables.Planes.result).map(_.length) must beEqualTo(5029).await(5, 5.seconds)
+  }
+
+  private def s3 = {
+    db.run(Tables.FlightsPlanes.result).map(_.length) must beEqualTo(100).await(5, 5.seconds)
   }
 
 }
