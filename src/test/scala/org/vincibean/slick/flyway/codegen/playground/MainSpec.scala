@@ -16,7 +16,7 @@ class MainSpec(implicit ee: ExecutionEnv) extends Specification {
 
   override def is: SpecStructure =
     s2"""
-        Flyway must
+        Auto generating code with Slick and Flyway should
           provide the right number of flights $s1
           provide the right number of planes $s2
           provide the right number of rows in the view $s3
