@@ -1,1 +1,1 @@
-CREATE VIEW FLIGHTS_PLANES AS SELECT f.year, f.month, f.dayOfMonth, f.scheduledDepTime, f.actualElapsedTime, f.scheduledElapsedTime, p.tailNum, p.model, p.manufacturer FROM planes p JOIN flights f ON p.tailNum = f.tailNum;
+CREATE VIEW FLIGHTS_PLANES AS SELECT f.year, f.month, f.dayOfMonth, f.scheduledDepTime, f.actualElapsedTime, f.scheduledElapsedTime, p.tailNum, p.model, p.manufacturer FROM planes p JOIN flights f ON p.tailNum = f.tailNum LIMIT 100;
