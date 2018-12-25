@@ -24,6 +24,14 @@ lazy val root = (project in file("."))
       "com.h2database" % "h2" % "1.4.197",
       "org.specs2" %% "specs2-core" % "4.3.6" % Test
     ),
+    fork in Test := true,
+    javaOptions in Test ++= Seq(
+      "-Xmx1G",
+      "-Xms512M",
+      "-Xmx1024M",
+      "-Xss2M",
+      "-XX:MaxMetaspaceSize=1024M"
+    ),
     slickCodegenDatabaseUrl := databaseUrl,
     slickCodegenDatabaseUser := databaseUser,
     slickCodegenDatabasePassword := databasePassword,
