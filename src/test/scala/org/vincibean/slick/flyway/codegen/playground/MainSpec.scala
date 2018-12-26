@@ -28,17 +28,14 @@ class MainSpec(implicit ee: ExecutionEnv) extends Specification {
           provide a view with valid data $s5
       """
 
-  private def s1 = {
+  private def s1 =
     db.run(Tables.Flights.result).map(_.length) must beEqualTo(151102).await(5, 5.seconds)
-  }
 
-  private def s2 = {
+  private def s2 =
     db.run(Tables.Planes.result).map(_.length) must beEqualTo(5029).await(5, 5.seconds)
-  }
 
-  private def s3 = {
+  private def s3 =
     db.run(Tables.FlightsPlanes.result).map(_.length) must beEqualTo(100).await(5, 5.seconds)
-  }
 
   private def s4 = {
     val res = db.run(Tables.FlightsPlanes.take(1).map(_.tailnum).result.headOption).map(_.flatten)
