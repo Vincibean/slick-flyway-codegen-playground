@@ -8,8 +8,7 @@ lazy val flyway = (project in file("flyway"))
     scalaVersion := "2.12.8",
     flywayUrl := databaseUrl,
     flywayUser := databaseUser,
-    flywayPassword := databasePassword,
-    flywayLocations += "db/migration"
+    flywayPassword := databasePassword
   )
 
 lazy val root = (project in file("."))
@@ -19,9 +18,11 @@ lazy val root = (project in file("."))
     name := "slick-flyway-codegen-playground",
     version := "0.1",
     libraryDependencies ++= Seq(
-      "com.typesafe.slick" %% "slick" % "3.2.3",
-      "com.typesafe.slick" %% "slick-hikaricp" % "3.2.3",
+      ("com.typesafe.slick" %% "slick" % "3.2.3").exclude("org.slf4j", "slf4j-api"),
+      ("com.typesafe.slick" %% "slick-hikaricp" % "3.2.3").exclude("org.slf4j", "slf4j-api"),
       "com.h2database" % "h2" % "1.4.197",
+      "org.slf4j" % "slf4j-api" % "1.7.25",
+      ("ch.qos.logback" % "logback-classic" % "1.2.3").exclude("org.slf4j", "slf4j-api"),
       "org.specs2" %% "specs2-core" % "4.3.6" % Test
     ),
     fork in Test := true,
