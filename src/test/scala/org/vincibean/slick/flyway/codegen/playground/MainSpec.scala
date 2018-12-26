@@ -2,7 +2,6 @@ package org.vincibean.slick.flyway.codegen.playground
 
 import java.time.LocalDate
 
-import models.Tables
 import org.specs2.Specification
 import org.specs2.concurrent.ExecutionEnv
 import org.specs2.specification.core.SpecStructure

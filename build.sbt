@@ -38,10 +38,9 @@ lazy val root = (project in file("."))
     slickCodegenDatabasePassword := databasePassword,
     slickCodegenDriver := slick.jdbc.H2Profile,
     slickCodegenJdbcDriver := "org.h2.Driver",
-    slickCodegenOutputPackage := "models",
+    slickCodegenOutputPackage := "org.vincibean.slick.flyway.codegen.playground",
     slickCodegenExcludedTables := Seq("schema_version"),
-    sourceGenerators in Compile += (slickCodegen in Compile).taskValue,
-    slickCodegenOutputDir := (sourceManaged in Compile).value / "a"
+    sourceGenerators in Compile += (slickCodegen in Compile).taskValue
   )
   .dependsOn(flyway)
   .aggregate(flyway)
